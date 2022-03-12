@@ -1,9 +1,23 @@
 <script lang="ts">
+    import Router from 'svelte-spa-router';
+    // import wrap from 'svelte-spa-router/wrap';
 
+    import Index from './pages/index.svelte';
+    import Article from './pages/article.svelte';
+    import Page from './pages/page.svelte';
+    import NotFound from './pages/404.svelte';
+
+    const routes = {
+        '/': Index,
+        '/a/:id': Article,
+        '/p/:id': Page,
+        '*': NotFound,
+    }
 </script>
 
 <main>
-    <p>Hello world</p>
+    <a href="#/a/test">test</a>
+    <Router {routes} />
 </main>
 
 <style global lang="postcss">
