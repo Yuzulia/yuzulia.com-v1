@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount, onDestroy } from 'svelte';
-    import type {Article} from '../interface/article';
+    import type {ArticleEntry} from '../interface/article-entry';
     import {params as spaParam} from 'svelte-spa-router';
     import {marked} from 'marked';
     import { mdRenderer } from "../md-renderer";
@@ -11,7 +11,7 @@
         baseUrl: endpoint,
         renderer: mdRenderer,
     });
-    let data: Promise<Article>;
+    let data: Promise<ArticleEntry>;
     export let params = {
         id: ''
     };
@@ -35,7 +35,7 @@
 
         if (!fetchDataResponse.ok) throw new Error('Fetch error');
 
-        const fetchData = await fetchDataResponse.json() as Article;
+        const fetchData = await fetchDataResponse.json() as ArticleEntry;
         if (fetchData.data.yuzuliaArticles.data.length === 0) throw new Error('Not found');
 
         return fetchData;

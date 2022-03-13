@@ -14,7 +14,7 @@
     }
 </script>
 
-<main class="w-screen h-screen bg-slate-100">
+<main class="w-full h-full bg-slate-100 bg-fixed">
     <a href="#/a/test">test</a>
     <div class="container mx-auto">
         <Router {routes} />

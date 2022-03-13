@@ -1,4 +1,4 @@
-export interface Article {
+export interface ArticleEntry {
   data: {
     yuzuliaArticles: {
       data?: {
