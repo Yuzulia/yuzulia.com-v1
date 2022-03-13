@@ -4,6 +4,12 @@
     import {params as spaParam} from 'svelte-spa-router';
     import {marked} from 'marked';
     import { mdRenderer } from "../md-renderer";
+    import {library} from "@fortawesome/fontawesome-svg-core";
+    import { faNewspaper, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+    // noinspection TypeScriptCheckImport
+    import { FontAwesomeIcon } from 'fontawesome-svelte';
+
+    library.add(faNewspaper, faPenToSquare);
 
     let endpoint = process.env.BACKEND_ENDPOINT;
 
@@ -30,8 +36,8 @@
                 variables: {
                     id: params.id,
                 }
-            })
-        })
+            }),
+        });
 
         if (!fetchDataResponse.ok) throw new Error('Fetch error');
 
@@ -55,7 +61,7 @@
 
 <style>
     .article-section {
-        @apply m-2 md:m-4 p-2 md:p-4 border rounded-lg shadow bg-white;
+        @apply mx-2 p-2 md:p-4 border rounded-lg shadow bg-white;
     }
 </style>
 
@@ -78,8 +84,8 @@
     <section class="article-section">
         <h1 class="text-4xl">{data.data.yuzuliaArticles.data[0].attributes.title}</h1>
         <div class="flex flex-wrap">
-            <span><i>P</i> <time>{new Date(data.data.yuzuliaArticles.data[0].attributes.publishedAt).toLocaleString()}</time></span>
-            <span><i>U</i> <time>{new Date(data.data.yuzuliaArticles.data[0].attributes.updatedAt).toLocaleString()}</time></span>
+            <span class="mx-1" title="公開日"><FontAwesomeIcon icon={faNewspaper} /> <time>{new Date(data.data.yuzuliaArticles.data[0].attributes.publishedAt).toLocaleString()}</time></span>
+            <span class="mx-1" title="最終更新日"><FontAwesomeIcon icon={faPenToSquare} /> <time>{new Date(data.data.yuzuliaArticles.data[0].attributes.updatedAt).toLocaleString()}</time></span>
         </div>
         <article>
             {@html marked.parse(
@@ -88,12 +94,14 @@
         </article>
         <hr class="my-2">
         <div class="mt-2">
+            {#if data.data.yuzuliaArticles.data[0].attributes.category.data}
             <div class="flex flex-wrap">
                 <span>カテゴリ: </span>
                 <a href="#/c/{data.data.yuzuliaArticles.data[0].attributes.category.data.attributes.slug}">
                     {data.data.yuzuliaArticles.data[0].attributes.category.data.attributes.name}
                 </a>
             </div>
+            {/if}
             <div class="flex flex-wrap">
                 <span>タグ: </span>
                 {#each data.data.yuzuliaArticles.data[0].attributes.tags.data as t}
