@@ -1,3 +1,1 @@
-<section>
-    <p>page here</p>
-</section>
+<p>Page here</p>

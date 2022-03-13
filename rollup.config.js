@@ -6,6 +6,9 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -47,7 +50,10 @@ export default {
             require('tailwindcss'),
             require('autoprefixer'),
           ]
-        }
+        },
+        replace: [
+          ['process.env.BACKEND_ENDPOINT', JSON.stringify(process.env.BACKEND_ENDPOINT)],
+        ]
       }),
 			compilerOptions: {
 				// enable run-time checks when not in production
