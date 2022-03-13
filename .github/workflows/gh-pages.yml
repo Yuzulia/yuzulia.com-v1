@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  BACKEND_ENDPOINT: https://portal.yuzulia.com
+  BACKEND_ENDPOINT: https://portal.yuzulia.work
 
 jobs:
   deploy:
