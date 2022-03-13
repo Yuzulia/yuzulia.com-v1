@@ -55,6 +55,10 @@
 </script>
 
 <style>
+    .section {
+        @apply bg-white rounded-md shadow-md p-2 md:p-4 mb-4 mx-2;
+    }
+
     .card {
         @apply bg-white rounded-md shadow-md p-2 text-black no-underline m-2;
     }
@@ -88,6 +92,26 @@
     }
 </style>
 
+<svelte:head>
+    <title>Yuzulia</title>
+</svelte:head>
+
+<div class="section">
+    <div class="flex justify-center">
+        <h1 class="font-extrabold">Yuzulia</h1>
+    </div>
+    <div class="flex justify-center"><b>Powered by YuzuRyo61.</b></div>
+    <div class="my-2">
+        <p>Yuzuliaへようこそ。</p>
+        <p>YuzuliaはYuzuRyo61のこのブログやサービスの総称です。</p>
+        <p>YuzuRyo61について詳しく知りたい、SNSを見てみたい、という方は以下のリンクへどうぞ。</p>
+    </div>
+    <div class="flex justify-center">
+        <a class="mx-2" href="https://yuzuryo61.me/" target="_blank">YuzuRyo61.me</a>
+        <a class="mx-2" href="https://misskey.io/@YuzuRyo61" target="_blank">SNS(misskey.io)</a>
+    </div>
+</div>
+
 {#await data}
 <div class="flex justify-center">
     <p>読み込んでいます...</p>
@@ -110,5 +134,11 @@
     <button class="pagination-btn" on:click={push(`/?page=${++query.page}`)} disabled={(data.data.yuzuliaArticles.meta.pagination.total - (pageSize * query.page) <= 0) ? true : null}>Next</button>
 </div>
 {:catch error}
-    <p>Fetch failed</p>
+<div class="section">
+    <h1>List fetch error</h1>
+    <p>記事の取得ができませんでした。</p>
+    <p>サーバーに問題があるか、ネットワークの接続に問題があると思われます。</p>
+    <p>再度時間をおいてお試しください。</p>
+    <p><a href="#/" on:click={() => data = getArticles()}>再読み込み</a></p>
+</div>
 {/await}

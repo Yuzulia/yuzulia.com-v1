@@ -28,7 +28,7 @@
     </div>
     <footer class="w-full py-2 lg:py-6">
         <div class="flex justify-center">
-            <p>&copy; 2022 YuzuRyo61.</p>
+            <p>&copy; 2016-2022 YuzuRyo61.</p>
         </div>
     </footer>
 </main>

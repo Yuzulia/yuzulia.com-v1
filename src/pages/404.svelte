@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>404 Not Found | Yuzulia</title>
+</svelte:head>
+
 <div class="mx-2 p-2 md:p-4 border rounded-lg shadow bg-white">
     <h1>404 Not Found</h1>
     <p>ページが見つかりませんでした。</p>
