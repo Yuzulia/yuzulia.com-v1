@@ -69,4 +69,8 @@
     h6 {
         @apply font-bold;
     }
+
+    article p {
+        @apply mb-4;
+    }
 </style>
