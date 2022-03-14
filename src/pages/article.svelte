@@ -31,7 +31,7 @@
             },
             body: JSON.stringify({
                 query: `query($id:String!){yuzuliaArticles(filters:{slug:{eq:$id}}){data{attributes{
-                title body publishedAt updatedAt category{data{attributes{name slug}}}tags{data{attributes{name slug}}}
+                title body slug publishedAt updatedAt category{data{attributes{name slug}}}tags{data{attributes{name slug}}}
                 seo{metaTitle metaDescription metaSocial{socialNetwork title description image{data{attributes{url}}}}
                 metaImage{data{attributes{url}}}keywords metaViewport canonicalURL metaRobots structuredData}}}}}`,
                 variables: {
@@ -75,7 +75,7 @@
         <meta property="og:title" content="{data.data.yuzuliaArticles.data[0].attributes.seo.metaTitle}" />
         <meta property="og:description" content="{data.data.yuzuliaArticles.data[0].attributes.seo.metaDescription}" />
         <meta property="og:url" content="https://yuzulia.com/#/article/{data.data.yuzuliaArticles.data[0].attributes.slug}" />
-        <meta property="og:image" content="{endpoint}{data.data.yuzuliaArticles.data[0].attributes.seo.metaImage}" />
+        <meta property="og:image" content="{endpoint}{data.data.yuzuliaArticles.data[0].attributes.seo.metaImage.data.attributes.url}" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Yuzulia" />
         {/if}

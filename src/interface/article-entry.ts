@@ -5,6 +5,7 @@ export interface ArticleEntry {
         attributes: {
           title: string;
           body: string;
+          slug: string;
           publishedAt: string;
           updatedAt: string;
           category: {
