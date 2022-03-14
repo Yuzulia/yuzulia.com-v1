@@ -70,12 +70,12 @@
     {#await data then data}
         <title>{data.data.yuzuliaArticles.data[0].attributes.title} | Yuzulia</title>
         {#if data.data.yuzuliaArticles.data[0].attributes.seo}
-        <meta content="{data.yuzuliaArticles.data[0].attributes.seo.metaDescription}" name="description" />
+        <meta content="{data.data.yuzuliaArticles.data[0].attributes.seo.metaDescription}" name="description" />
 
-        <meta property="og:title" content="{data.yuzuliaArticles.data[0].attributes.seo.metaTitle}" />
-        <meta property="og:description" content="{data.yuzuliaArticles.data[0].attributes.seo.metaDescription}" />
-        <meta property="og:url" content="https://yuzulia.com/#/article/{data.yuzuliaArticles.data[0].attributes.slug}" />
-        <meta property="og:image" content="{endpoint}{data.yuzuliaArticles.data[0].attributes.seo.metaImage}" />
+        <meta property="og:title" content="{data.data.yuzuliaArticles.data[0].attributes.seo.metaTitle}" />
+        <meta property="og:description" content="{data.data.yuzuliaArticles.data[0].attributes.seo.metaDescription}" />
+        <meta property="og:url" content="https://yuzulia.com/#/article/{data.data.yuzuliaArticles.data[0].attributes.slug}" />
+        <meta property="og:image" content="{endpoint}{data.data.yuzuliaArticles.data[0].attributes.seo.metaImage}" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Yuzulia" />
         {/if}
